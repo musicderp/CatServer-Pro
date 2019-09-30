@@ -647,8 +647,8 @@ public class FMLCommonHandler
     {
         if (!shouldAllowPlayerLogins())
         {
-            TextComponentString text = new TextComponentString("服务器正在启动, 请稍后再连接服务器");
-            FMLLog.log.info("与玩家断开连接: {}", text.getUnformattedText());
+            TextComponentString text = new TextComponentString("Server is starting, Please try connecting later");
+            FMLLog.log.info("Disconnect from the plaer: {}", text.getUnformattedText());
             manager.sendPacket(new SPacketDisconnect(text));
             manager.closeChannel(text);
             return false;

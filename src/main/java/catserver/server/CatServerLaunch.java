@@ -16,7 +16,7 @@ public class CatServerLaunch {
 
     public static void main(String[] args) throws Throwable {
         //downloadLibraries();
-        if (update) System.out.println("服务端版本过旧请更新!");
+        if (update) System.out.println("The server version is too old, please update!");
         if (disable) Runtime.getRuntime().exit(0);
         if (huanlin) checkEULA();
         Class.forName("net.minecraftforge.fml.relauncher.ServerLaunchWrapper").getDeclaredMethod("main", String[].class).invoke(null, new Object[] { args });
@@ -25,9 +25,9 @@ public class CatServerLaunch {
     private static void downloadLibraries() {
         File libListFile = new File("libraries_pro.info");
         if (!libListFile.exists()){
-            System.out.println("首次运行服务端需要下载库文件才能运行,请耐心等待..");
+            System.out.println("The first time you run the server, it needs to download the library files to run. Please be patient...");
             if (!tryDownload(libListFile, null)) {
-                System.out.println("库文件列表下载失败,请检查网络!");
+                System.out.println("Library file list download failed, please check the network!");
                 Runtime.getRuntime().exit(0);
                 return;
             }
@@ -58,7 +58,7 @@ public class CatServerLaunch {
             hasException = true;
         }
         if (hasException)
-            System.out.println("校验库文件时发生错误,请检查网络或手动下载,服务端将尝试继续启动!");
+            System.out.println("An error occurred while verifying the library files. Please check the network or manually download them. The server will try to continue booting!");
     }
 
     private static void downloadLibrary(String type, String key, String value) throws IOException {
@@ -87,12 +87,12 @@ public class CatServerLaunch {
             try {
                 downloadFile(downloadUrl, file);
                 if (!file.exists() || (md5 != null && !Md5Utils.getFileMD5String(file).equals(md5))) {
-                    System.out.println(String.format("文件 %s 校验失败, 你也可以手动下载: %s", file.getName(), downloadUrl));
+                    System.out.println(String.format("File %s verification failed, you can also manually download it: %s", file.getName(), downloadUrl));
                     continue;
                 }
                 return true;
             } catch (IOException e) {
-                System.out.println(String.format("下载文件失败(HTTP状态: %s), 你也可以手动下载: %s", e.toString(), downloadUrl));
+                System.out.println(String.format("Download file failed (HTTP status: %s), you can also download it manually: %s", e.toString(), downloadUrl));
                 if (e instanceof ConnectException || e instanceof SocketTimeoutException) iterator.remove();
             }
         }
@@ -105,7 +105,7 @@ public class CatServerLaunch {
         connection.setConnectTimeout(8000);
         connection.setRequestMethod("GET");
 
-        System.out.println(String.format("正在下载文件 %s 大小: %s", saveFile.getName(), getSize(connection.getContentLengthLong())));
+        System.out.println(String.format("Downloading file %s size: %s", saveFile.getName(), getSize(connection.getContentLengthLong())));
 
         ReadableByteChannel rbc = Channels.newChannel(connection.getInputStream());
         FileOutputStream fos = new FileOutputStream(saveFile);

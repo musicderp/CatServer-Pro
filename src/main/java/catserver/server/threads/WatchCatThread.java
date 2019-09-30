@@ -20,13 +20,13 @@ public class WatchCatThread extends TimerTask {
         if (lastTime > 0 && curTime - lastTime > 2000 && curTime - lastWarnTime > 30000) {
             lastWarnTime = curTime;
             FMLLog.log.debug("------------------------------");
-            FMLLog.log.debug("[Cat侦测系统]服务器主线程已陷入停顿" + (curTime - lastTime) + "ms! 你的服务器卡顿了!");
-            FMLLog.log.debug("当前主线程堆栈追踪:");
+            FMLLog.log.debug("[Cat detection system] main server thread has been stalled" + (curTime - lastTime) + "ms! Your server is deadlocked!");
+            FMLLog.log.debug("Current main thread stack trace:");
             for ( StackTraceElement stack : MinecraftServer.getServerInst().primaryThread.getStackTrace() )
             {
                 FMLLog.log.debug("\t\t" + stack);
             }
-            FMLLog.log.debug("--------------请注意,这不是报错!请勿反馈!可在catserver.yml中check.threadLag关闭----------------");
+            FMLLog.log.debug("--------------Please note that this is not an error! Do not report this! catserver.yml in check.threadLag shut down----------------");
         }
     }
 

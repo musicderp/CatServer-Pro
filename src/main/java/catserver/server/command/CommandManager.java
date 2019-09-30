@@ -15,13 +15,13 @@ public class CommandManager {
         for (Command command : commandMap.getCommands()) {
             if (command instanceof ModCustomCommand) {
                 if (!((ModCustomCommand) command).vanillaCommand.getClass().getName().startsWith("net.minecraft.command.")) {
-                    sb.append(String.format("注册指令 %s 权限为 minecraft.command.%s\n", command.getName(), command.getName()));
+                    sb.append(String.format("Registration directive %s permission is minecraft.command.%s\n", command.getName(), command.getName()));
                 }
             }
         }
         try {
             FileUtils.writeByteArrayToFile(new File("forgePermission.log"), sb.toString().getBytes(StandardCharsets.UTF_8));
-            FMLLog.info("已将注册的Forge指令权限输出到forgePermission.log");
+            FMLLog.info("The registered Forge command permission has been output to forgePermission.log");
         } catch (IOException e) {
             e.printStackTrace();
         }

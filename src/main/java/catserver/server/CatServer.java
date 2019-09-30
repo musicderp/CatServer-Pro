@@ -104,7 +104,7 @@ public class CatServer {
         try {
             reloadFakePlayerPermissions();
         } catch (IOException e) {
-            System.out.println("FakePlayer权限文件读取失败");
+            System.out.println("FakePlayer: Read files failed");
             System.exit(1);
         }
     }

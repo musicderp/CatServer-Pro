@@ -90,7 +90,7 @@ public class FMLLaunchHandler
         RuntimeMXBean runtime = (RuntimeMXBean) ManagementFactory.getRuntimeMXBean();
         for (String s : runtime.getInputArguments()) {
             if (s != null && (s.startsWith("-Xss"))) {
-                System.out.println("您的启动参数里设置了每个线程的堆栈大小(-Xss), 会引起服务器崩溃, 请删除");
+                System.out.println("The stack size of each thread is set in your startup parameters(-Xss), This will cause the server to crash, please delete");
                 System.exit(1);
             }
         }

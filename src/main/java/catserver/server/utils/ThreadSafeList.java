@@ -12,7 +12,7 @@ import java.util.Vector;
 import java.util.function.Predicate;
 
 public class ThreadSafeList<E> extends Vector<E> {
-    private static final String message = "插件/MOD尝试异步操作List已拦截,请与插件/MOD作者反馈!";
+    private static final String message = "Plugin/MOD tried asynchronous operation List has been intercepted, please contact with plugin / mod author!";
     private final boolean print;
 
     public ThreadSafeList(boolean print) {
